@@ -1,45 +1,340 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.cdnfonts.com/css/akira-expanded" rel="stylesheet">
-  <link rel="stylesheet" href="sass.css">
-  <title>Life MDG</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Life MDG</title>
+
+<style>
+/* ===== Global ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ===== Header ===== */
+header.ambony {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo img { height: 90px; width: auto; }
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.menu li {
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.menu li.active, .menu li:hover { color: #e71437; }
+.menu li.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background-color: #e71437;
+  border-radius: 2px;
+}
+
+.menu-toggle { display: none; flex-direction: column; cursor: pointer; width: 25px; gap: 5px; }
+.menu-toggle span { height: 3px; background: #333; border-radius: 2px; transition: all 0.3s; }
+
+@media(max-width:768px){
+  .menu ul { display: none; flex-direction: column; position: absolute; top: 60px; right:0; width: 250px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 0; }
+  .menu ul.open { display: flex; }
+  .menu-toggle { display: flex; }
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+}
+
+/* ===== Content ===== */
+.content { animation: fade 0.5s ease; min-height: 60vh; padding: 20px; }
+@keyframes fade { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+
+/* ===== Accueil ===== */
+.parallax {
+  background-image: url('img/1.jpg');
+  height: 80vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 20px;
+  text-align: center;
+}
+.service {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px 20px;
+  flex: 1 1 250px;
+  max-width: 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.service:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+.service img { width: 60px; margin-bottom: 15px; filter: invert(0); }
+
+/* ===== Contact ===== */
+.contact { padding: 60px 20px; background: #fff; border-radius: 12px; max-width: 700px; margin: 50px auto; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+.contact h2 { margin-bottom: 25px; font-size: 2rem; text-align: center; color: #e71437; }
+.contact form { display: flex; flex-direction: column; gap: 15px; }
+.contact input, .contact textarea {
+  padding: 15px; border-radius: 10px; border: 1px solid #ccc;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
+}
+.contact input:focus, .contact textarea:focus {
+  border-color: #e71437;
+  box-shadow: 0 0 8px rgba(231,20,55,0.2);
+  outline: none;
+}
+.contact button {
+  padding: 15px;
+  border: none;
+  background: #e71437;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.contact button:hover { background: #c10f2b; transform: translateY(-2px); }
+
+/* ===== Catalogue ===== */
+.catalogue {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.item {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+.item img { width: 100%; height: 220px; object-fit: cover; }
+.item p { padding: 10px; text-align: center; font-weight: 500; font-size: 1rem; }
+
+/* ===== Sous-onglets textiles ===== */
+.subtabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+.subtabs button {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+.subtabs button.active {
+  border-color: #e71437;
+  background: #e71437;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(231,20,55,0.2);
+}
+</style>
 </head>
 <body>
 
-  <header class="ambony">
-    <div class="logo">
-      <img src="img/Logo.jpg" alt="Logo">
-    </div>
+<header class="ambony">
+  <div class="logo"><img src="img/Logo.jpg" alt="Logo Life MDG"></div>
+  <nav class="menu">
+    <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+    <ul id="menu-list">
+      <li class="active" data-target="accueil">Accueil</li>
+      <li data-target="textiles">Textiles <br>et mode</li>
+      <li data-target="impression">Solution d'impression <br>et personnalisations</li>
+      <li data-target="articles">Articles et objets <br>personnalisables</li>
+    </ul>
+  </nav>
+</header>
 
-    <nav class="menu">
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+<main>
+  <div class="content" id="content"></div>
+</main>
+
+<script>
+// Menu burger
+const toggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu-list');
+toggle.addEventListener('click', ()=>{
+  toggle.classList.toggle('active');
+  menu.classList.toggle('open');
+});
+
+// Catalogue generator
+function catalogueHTML(title, products, subtabs=false){
+  if(!subtabs){
+    return `<h1 style="text-align:center;margin-bottom:30px;">${title}</h1>
+      <div class="catalogue">${products.map(p=>`
+        <div class="item"><img src="${p.img}" alt="${p.nom}"><p>${p.nom}</p></div>`).join('')}</div>`;
+  } else {
+    return `<h1 style="text-align:center;margin-bottom:20px;">${title}</h1>
+      <div class="subtabs">
+        <button class="active" data-sub="homme">Homme</button>
+        <button data-sub="femme">Femme</button>
+        <button data-sub="enfant">Enfant</button>
       </div>
-      <ul id="menu-list">
-        <li class="active">Goodies</li>
-        <li>Tenue Homme</li>
-        <li>Tenue Femme</li>
-        <li>DTF - UV - serigraphie <br> broderie </li>
-      </ul>
-    </nav>
-  </header>
+      <div id="sub-content" class="catalogue"></div>`;
+  }
+}
 
-  <script>
-    // petit JS pour ouvrir/fermer le menu sur mobile
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu-list');
+// Stockage des produits pour textiles
+const produitsTextiles = {
+  homme:[
+    {nom:"T-shirt homme <br> A partir de 18 000 Ar <br> + Personnalisation", img:"https://image.made-in-china.com/202f0j00ormqSYPGvTzf/OEM-Customized-T-Shirt-Pour-Hommes-America-Size-Cotton-White-Round-Neck-Hip-Hop-T-Shirts-Pour-Hommes.webp"},
+    {nom:"Sweat homme", img:"https://bleausardclimbing.com/cdn/shop/products/DSC04639_cropped2x_web.jpg?v=1631562092"},
+    {nom:"Pantalon homme", img:"https://www.cocorico.store/cdn/shop/files/1-Chino-marine-1056x1200.jpg?v=1752562064"}
+  ],
+  femme:[
+    {nom:"Robe femme", img:"https://images.unsplash.com/photo-1520975961068-1a49af6b4b02?auto=format&w=800&q=80"},
+    {nom:"T-shirt femme", img:"https://images.unsplash.com/photo-1520975918318-7bdbd1b95b14?auto=format&w=800&q=80"},
+    {nom:"Hoodie femme", img:"https://images.unsplash.com/photo-1618354691282-2b11de45c41f?auto=format&w=800&q=80"}
+  ],
+  enfant:[
+    {nom:"T-shirt enfant", img:"https://images.unsplash.com/photo-1593032465171-8b55a7b0b6a7?auto=format&w=800&q=80"},
+    {nom:"Pantalon enfant", img:"https://images.unsplash.com/photo-1605478371229-fdbaadb0b2f0?auto=format&w=800&q=80"},
+    {nom:"Sweat enfant", img:"https://images.unsplash.com/photo-1618354691373-d2cc86f10e56?auto=format&w=800&q=80"}
+  ]
+};
 
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('open');
-    });
-  </script>
+// Sections
+const sections = {
+  accueil: `
+    <div class="parallax">Life MDG - Personnalisez votre style</div>
+    <section class="services">
+      <div class="service">
+        <img src="https://img.icons8.com/ios-filled/100/000000/t-shirt.png"/>
+        <h3>Textiles et mode</h3>
+        <p>Vêtements personnalisés pour homme, femme et enfant.</p>
+      </div>
+      <div class="service">
+        <img src="https://img.icons8.com/ios-filled/100/000000/print.png"/>
+        <h3>Solutions d'impression</h3>
+        <p>DTF, sérigraphie, UV et broderie sur tous types de supports.</p>
+      </div>
+      <div class="service">
+        <img src="https://img.icons8.com/ios-filled/100/000000/gift.png"/>
+        <h3>Articles personnalisables</h3>
+        <p>Mugs, casquettes, tote bags et objets importés personnalisables.</p>
+      </div>
+    </section>
+    <section class="contact">
+      <h2>Contactez-nous</h2>
+      <form>
+        <input type="text" placeholder="Nom" required/>
+        <input type="email" placeholder="Email" required/>
+        <textarea placeholder="Message" rows="5" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+  `,
+  textiles: catalogueHTML("Textiles et mode", produitsTextiles, true),
+  impression: catalogueHTML("Solutions d'impression et personnalisations", [
+    {nom:"Impression DTF", img:"https://iororwxhinkplp5p-static.micyjz.com/cloud/lpBpmKiolmSRpjkmqolrip/MC760DW-A01.jpg"},
+    {nom:"Impression Sérigraphie", img:"https://autoprintmachine.com/wp-content/uploads/2023/07/First_Automatic_Screen_Printing_Press.webp"},
+    {nom:"Broderie", img:"https://seridis.fr/wp-content/uploads/2017/06/Blog-1-broderie.jpg"},
+    {nom:"UV DTF", img:"https://rbdigital.ca/cdn/shop/files/UV-DTF-Printer-6.jpg?v=1747404237&width=1445"},
+    {nom:"Presse a chaude", img:"https://sc04.alicdn.com/kf/H7016d1682f3848cf82d5ff8386614ef7c.jpg"},
+    {nom:"Impression sur Papier", img:"https://media.istockphoto.com/id/1413483209/fr/photo/calendrier-avec-date-marqu%C3%A9e.jpg?s=612x612&w=0&k=20&c=PdRVwVPme_ptKrjxkkeKUs2FuE0NxoHzlur6EmVHVok="}
+  ]),
+  articles: catalogueHTML("Articles et objets personnalisables", [
+    {nom:"Mug personnalisé", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVy7-PRjtJsorVkRHzI8wsgCOYmoDbZ-SocvoQA5BJG84zK9x9bfF_5yNvKjw95Tzan3c&usqp=CAU"},
+    {nom:"Casquette brodée", img:"https://m.media-amazon.com/images/I/71JoyOEUHWL._AC_UY1000_.jpg"},
+    {nom:"Sac tote bag imprimé", img:"https://www.packqueen.com.au/cdn/shop/files/express-value-calico-carry-bags-plain-or-printed-packqueen-115298_grande.jpg?v=1711706882"},
+    {nom:"Stylos personnalisable", img:"https://img.freepik.com/photos-gratuite/stylo-mis-cahier-ouvert-lignes-horizontales_181624-22838.jpg?semt=ais_hybrid&w=740&q=80"},
+    {nom:"Porte clé personnalisable", img:"https://fr.higift.eu//media/catalog/category/portachiavi-legno.jpg"},
+  ])
+};
+
+// Affichage initial
+const content = document.getElementById('content');
+content.innerHTML = sections.accueil;
+
+// Menu click
+const items = document.querySelectorAll('#menu-list li');
+items.forEach(item=>{
+  item.addEventListener('click', ()=>{
+    items.forEach(i=>i.classList.remove('active'));
+    item.classList.add('active');
+    const target = item.getAttribute('data-target');
+    content.innerHTML = sections[target];
+
+    // Sous-onglets textiles
+    if(target==='textiles'){
+      const subButtons = document.querySelectorAll('.subtabs button');
+      const subContent = document.getElementById('sub-content');
+
+      // Afficher initialement Homme
+      subContent.innerHTML = produitsTextiles.homme.map(p=>`<div class="item"><img src="${p.img}" alt="${p.nom}"><p>${p.nom}</p></div>`).join('');
+
+      subButtons.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          subButtons.forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          const key = btn.getAttribute('data-sub');
+          subContent.innerHTML = produitsTextiles[key].map(p=>`<div class="item"><img src="${p.img}" alt="${p.nom}"><p>${p.nom}</p></div>`).join('');
+        });
+      });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
-
