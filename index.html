@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.cdnfonts.com/css/akira-expanded" rel="stylesheet">
+  <link rel="stylesheet" href="sass.css">
+  <title>Life MDG</title>
+</head>
+<body>
+
+  <header class="ambony">
+    <div class="logo">
+      <img src="img/Logo.jpg" alt="Logo">
+    </div>
+
+    <nav class="menu">
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul id="menu-list">
+        <li class="active">Goodies</li>
+        <li>Tenue Homme</li>
+        <li>Tenue Femme</li>
+        <li>DTF - UV - serigraphie <br> broderie </li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+    // petit JS pour ouvrir/fermer le menu sur mobile
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu-list');
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
+
