@@ -114,7 +114,8 @@ header.ambony {
 .service img { width: 60px; margin-bottom: 15px; filter: invert(0); }
 
 /* ===== Contact ===== */
-.contact { padding: 60px 20px; background: #fff; border-radius: 12px; max-width: 700px; margin: 50px auto; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+.contact { padding: 60px 20px; background: #fff; border-radius: 12px; max-width:
+ 700px; margin: 50px auto; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
 .contact h2 { margin-bottom: 25px; font-size: 2rem; text-align: center; color: #e71437; }
 .contact form { display: flex; flex-direction: column; gap: 15px; }
 .contact input, .contact textarea {
@@ -237,7 +238,8 @@ function catalogueHTML(title, products, subtabs=false){
 // Stockage des produits pour textiles
 const produitsTextiles = {
   homme:[
-    {nom:"T-shirt homme <br> A partir de 18 000 Ar <br> + Personnalisation", img:"https://image.made-in-china.com/202f0j00ormqSYPGvTzf/OEM-Customized-T-Shirt-Pour-Hommes-America-Size-Cotton-White-Round-Neck-Hip-Hop-T-Shirts-Pour-Hommes.webp"},
+    {nom:"T-shirt homme <br> A partir de 18 000 Ar <br> + Personnalisation", 
+    img:"https://image.made-in-china.com/202f0j00ormqSYPGvTzf/OEM-Customized-T-Shirt-Pour-Hommes-America-Size-Cotton-White-Round-Neck-Hip-Hop-T-Shirts-Pour-Hommes.webp"},
     {nom:"Sweat homme", img:"https://bleausardclimbing.com/cdn/shop/products/DSC04639_cropped2x_web.jpg?v=1631562092"},
     {nom:"Pantalon homme", img:"https://www.cocorico.store/cdn/shop/files/1-Chino-marine-1056x1200.jpg?v=1752562064"}
   ],
@@ -284,6 +286,7 @@ const sections = {
       </form>
     </section>
   `,
+  //PARTIE IMPRESSIONS
   textiles: catalogueHTML("Textiles et mode", produitsTextiles, true),
   impression: catalogueHTML("Solutions d'impression et personnalisations", [
     {nom:"Impression DTF", img:"https://iororwxhinkplp5p-static.micyjz.com/cloud/lpBpmKiolmSRpjkmqolrip/MC760DW-A01.jpg"},
@@ -293,12 +296,22 @@ const sections = {
     {nom:"Presse a chaude", img:"https://sc04.alicdn.com/kf/H7016d1682f3848cf82d5ff8386614ef7c.jpg"},
     {nom:"Impression sur Papier", img:"https://media.istockphoto.com/id/1413483209/fr/photo/calendrier-avec-date-marqu%C3%A9e.jpg?s=612x612&w=0&k=20&c=PdRVwVPme_ptKrjxkkeKUs2FuE0NxoHzlur6EmVHVok="}
   ]),
+  
+
+  // PARTIE GOODIES AVEC PRIX
   articles: catalogueHTML("Articles et objets personnalisables", [
-    {nom:"Mug personnalisé", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVy7-PRjtJsorVkRHzI8wsgCOYmoDbZ-SocvoQA5BJG84zK9x9bfF_5yNvKjw95Tzan3c&usqp=CAU"},
-    {nom:"Casquette brodée", img:"https://m.media-amazon.com/images/I/71JoyOEUHWL._AC_UY1000_.jpg"},
-    {nom:"Sac tote bag imprimé", img:"https://www.packqueen.com.au/cdn/shop/files/express-value-calico-carry-bags-plain-or-printed-packqueen-115298_grande.jpg?v=1711706882"},
-    {nom:"Stylos personnalisable", img:"https://img.freepik.com/photos-gratuite/stylo-mis-cahier-ouvert-lignes-horizontales_181624-22838.jpg?semt=ais_hybrid&w=740&q=80"},
-    {nom:"Porte clé personnalisable", img:"https://fr.higift.eu//media/catalog/category/portachiavi-legno.jpg"},
+    {nom:"Mug personnalisé <br> 15 000Ar", img:"img/mug.jpg"},
+    {nom:"Casquette brodée <br> 20 000Ar", img:"img/cas.jpg"},
+    {nom:"Sac tote bag MM imprimé <br> 7000 Ar", img:"img/tot.jpg"},
+    {nom:"Sac tote bag GM imprimé <br> 9000 Ar", img:"img/tot1.jpg"},
+    {nom:"Stylos personnalisable premium <br> à partir de 6000 Ar", img:"img/pen.jpeg"},
+    {nom:"Stylos personnalisable <br> à partir de 3200 Ar", img:"img/pen2.jpeg"},
+    {nom:"Porte clé personnalisable", img:"img/cle.jpeg"},
+    {nom:"Bloc note <br> 10 000 Ar", img:"img/note.jpg"},
+    {nom:"Tapis souris Noir GM", img:"img/tapis.jpeg"},
+    {nom:"Tapis souris Blanc MM", img:"img/tapis2.jpeg"},
+    {nom:"Personnalisation Drapeau", img:"img/saina.jpeg"},
+    {nom:"Personnalisation Fanion", img:"img/saina2.jpeg"},
   ])
 };
 
