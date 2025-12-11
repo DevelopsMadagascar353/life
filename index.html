@@ -74,9 +74,10 @@ header.ambony {
 @keyframes fade { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
 
 /* ===== Accueil ===== */
+/* ===== Hero Parallax ===== */
 .parallax {
-  background-image: url('img/1.jpg');
-  height: 80vh;
+  background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?q=80');
+  height: 90vh;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -85,33 +86,157 @@ header.ambony {
   justify-content: center;
   color: white;
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+  padding: 0 20px;
 }
 
-.services {
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  opacity: 0.95;
+}
+
+.btn-hero {
+  padding: 15px 30px;
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn-hero:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ===== Produits 3D ===== */
+.products-3d {
+  text-align: center;
+  padding: 70px 20px;
+  background: #f9f9f9;
+}
+
+.products-3d h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.products-grid {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 30px;
-  padding: 50px 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  width: 280px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+/* ===== Services ===== */
+.services {
+  padding: 70px 20px;
   text-align: center;
 }
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.services-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
 .service {
   background: #fff;
   border-radius: 12px;
-  padding: 25px 20px;
-  flex: 1 1 250px;
-  max-width: 300px;
+  padding: 25px;
+  width: 280px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: 0.3s;
 }
+
 .service:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
-.service img { width: 60px; margin-bottom: 15px; filter: invert(0); }
+
+.service img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+/* ===== Contact ===== */
+.contact {
+  padding: 70px 20px;
+  text-align: center;
+  background: #000;
+  color: white;
+}
+
+.contact h2 {
+  margin-bottom: 30px;
+}
+
+.contact form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.contact button {
+  padding: 15px;
+  background: #fff;
+  border: none;
+  color: #000;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact button:hover {
+  background: #ddd;
+}
 
 /* ===== Contact ===== */
 .contact { padding: 60px 20px; background: #fff; border-radius: 12px; max-width:
@@ -238,13 +363,19 @@ function catalogueHTML(title, products, subtabs=false){
 // Stockage des produits pour textiles
 const produitsTextiles = {
   homme:[
-    {nom:"T-shirt homme <br> A partir de 18 000 Ar <br> + Personnalisation", 
-    img:"https://image.made-in-china.com/202f0j00ormqSYPGvTzf/OEM-Customized-T-Shirt-Pour-Hommes-America-Size-Cotton-White-Round-Neck-Hip-Hop-T-Shirts-Pour-Hommes.webp"},
-    {nom:"Sweat homme", img:"https://bleausardclimbing.com/cdn/shop/products/DSC04639_cropped2x_web.jpg?v=1631562092"},
-    {nom:"Pantalon homme", img:"https://www.cocorico.store/cdn/shop/files/1-Chino-marine-1056x1200.jpg?v=1752562064"}
+    {nom:"Polo homme <br> à partir de 25 000 Ar", img:"img/15.png"},
+    {nom:"Polo homme", img:"img/2.png"},
+    {nom:"Polo homme", img:"img/3.png"},
+    {nom:"Polo homme", img:"img/5.png"},
+    {nom:"Polo homme", img:"img/6.png"},
+    {nom:"Tee-shirt homme ", img:"img/7.jpg"},
+    {nom:"Tee-shirt homme ", img:"img/8.png"},
   ],
   femme:[
-    {nom:"Robe femme", img:"https://images.unsplash.com/photo-1520975961068-1a49af6b4b02?auto=format&w=800&q=80"},
+    {nom:"Tee-shirt Femme ", img:"img/7.jpg"},
+    {nom:"Tee-shirt Femme ", img:"img/8.png"},
+    {nom:"Polo Femme <br> à partir de 25 000 Ar", img:"img/15.png"},
+    {nom:"Polo Femme", img:"img/4.png"},
     {nom:"T-shirt femme", img:"https://images.unsplash.com/photo-1520975918318-7bdbd1b95b14?auto=format&w=800&q=80"},
     {nom:"Hoodie femme", img:"https://images.unsplash.com/photo-1618354691282-2b11de45c41f?auto=format&w=800&q=80"}
   ],
@@ -255,36 +386,80 @@ const produitsTextiles = {
   ]
 };
 
-// Sections
+// --------------ACCUEIL ------------- ///
 const sections = {
   accueil: `
-    <div class="parallax">Life MDG - Personnalisez votre style</div>
-    <section class="services">
-      <div class="service">
-        <img src="https://img.icons8.com/ios-filled/100/000000/t-shirt.png"/>
-        <h3>Textiles et mode</h3>
-        <p>Vêtements personnalisés pour homme, femme et enfant.</p>
-      </div>
-      <div class="service">
-        <img src="https://img.icons8.com/ios-filled/100/000000/print.png"/>
-        <h3>Solutions d'impression</h3>
-        <p>DTF, sérigraphie, UV et broderie sur tous types de supports.</p>
-      </div>
-      <div class="service">
-        <img src="https://img.icons8.com/ios-filled/100/000000/gift.png"/>
-        <h3>Articles personnalisables</h3>
-        <p>Mugs, casquettes, tote bags et objets importés personnalisables.</p>
-      </div>
-    </section>
-    <section class="contact">
-      <h2>Contactez-nous</h2>
-      <form>
-        <input type="text" placeholder="Nom" required/>
-        <input type="email" placeholder="Email" required/>
-        <textarea placeholder="Message" rows="5" required></textarea>
-        <button type="submit">Envoyer</button>
-      </form>
-    </section>
+    <!-- ===== HERO PARALLAX ===== -->
+<div class="parallax">
+  <div class="hero-content">
+    <h1>Life MDG</h1>
+    <p>Expert en habillement – Confection, impression & personnalisation premium</p>
+    <a href="#services" class="btn-hero">Découvrir nos services</a>
+  </div>
+</div>
+
+<!-- ===== SECTION PRODUITS 3D ===== -->
+<section class="products-3d">
+  <h2>Nos produits phares</h2>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://cdn.pixabay.com/photo/2021/03/05/09/26/t-shirt-6070128_1280.png" alt="Tee-shirt blanc 3D">
+      <h3>Tee-shirt blanc</h3>
+      <p>Modèle premium – Idéal pour impression DTF & broderie</p>
+    </div>
+
+    <div class="product-card">
+      <img src="https://cdn.pixabay.com/photo/2017/06/20/22/29/polo-2420428_1280.png" alt="Polo noir 3D">
+      <h3>Polo noir</h3>
+      <p>Coupe professionnelle – Personnalisation UV-DTF</p>
+    </div>
+
+    <div class="product-card">
+      <img src="https://cdn.pixabay.com/photo/2014/04/03/11/07/trousers-311841_1280.png" alt="Pantalon 3D">
+      <h3>Pantalon homme</h3>
+      <p>Confection industrielle – Matières premium</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION SERVICES ===== -->
+<section class="services" id="services">
+  <h2>Nos services</h2>
+
+  <div class="services-list">
+
+    <div class="service">
+      <img src="https://img.icons8.com/ios-filled/100/000000/t-shirt.png"/>
+      <h3>Textiles & Mode</h3>
+      <p>Confection professionnelle pour homme, femme et enfant – petites & grandes séries.</p>
+    </div>
+
+    <div class="service">
+      <img src="https://img.icons8.com/ios-filled/100/000000/print.png"/>
+      <h3>Impressions professionnelles</h3>
+      <p>DTF – Sérigraphie – UV DTF – Broderie. Qualité industrielle pour tous supports.</p>
+    </div>
+
+    <div class="service">
+      <img src="https://img.icons8.com/ios-filled/100/000000/gift.png"/>
+      <h3>Goodies & Objets personnalisables</h3>
+      <p>Mugs, casquettes, tote bags, accessoires et objets importés personnalisables.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECTION CONTACT ===== -->
+<section class="contact">
+  <h2>Contactez-nous</h2>
+  <form>
+    <input type="text" placeholder="Nom" required/>
+    <input type="email" placeholder="Email" required/>
+    <textarea placeholder="Votre message..." rows="5" required></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
+
   `,
   //PARTIE IMPRESSIONS
   textiles: catalogueHTML("Textiles et mode", produitsTextiles, true),
@@ -311,7 +486,7 @@ const sections = {
     {nom:"Tapis souris Noir GM", img:"img/tapis.jpeg"},
     {nom:"Tapis souris Blanc MM", img:"img/tapis2.jpeg"},
     {nom:"Personnalisation Drapeau", img:"img/saina.jpeg"},
-    {nom:"Personnalisation Fanion", img:"img/saina2.jpeg"},
+    {nom:"Personnalisation Fanion", img:"img/saina2.jpeg"}
   ])
 };
 
