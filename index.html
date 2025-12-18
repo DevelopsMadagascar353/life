@@ -46,7 +46,7 @@ header.ambony{display:flex;justify-content:space-between;align-items:center;padd
 }
 .content{animation:fade .5s ease;min-height:60vh;padding:20px}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.parallax{background:url('img/1.jpeg');height:90vh;background-attachment:fixed;background-position:center;background-size:cover;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:0 20px}
+.parallax{background:url('img/1.png');height:90vh;background-attachment:fixed;background-position:center;background-size:cover;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:0 20px}
 .hero-content h1{font-size:4rem;font-weight:800;margin-bottom:10px;text-shadow:2px 2px 20px rgba(0,0,0,.7)}
 .hero-content p{font-size:1.4rem;margin-bottom:25px;opacity:.95}
 .btn-hero{padding:15px 30px;background:#fff;color:#000;font-weight:700;border-radius:8px;transition:.3s}
@@ -111,13 +111,29 @@ return `<h1 style="text-align:center;margin-bottom:20px;">${t}</h1>
 <div id="sub-content" class="catalogue"></div>`}
 
 const produitsTextiles={homme:[{nom:"Polo homme <br> à partir de 25 000 Ar",
-img:"img/15.png"},{nom:"Polo homme",img:"img/2.png"},{nom:"Polo homme",img:"img/3.png"},{nom:"Polo homme",img:"img/5.png"},{nom:"Polo homme",img:"img/6.png"},{nom:"Tee-shirt homme",img:"img/7.jpg"},
-{nom:"Tee-shirt homme",img:"img/8.png"},{nom:"Pantalon homme",img:"img/9.png"},{nom:"Pantalon homme",img:"img/10.png"},{nom:"Pantalon homme",img:"img/11.jpg"},{nom:"Pantalon homme",img:"img/12.png"},
+img:"img/15.png"},
+{nom:"Polo homme",img:"img/2.png"},
+{nom:"Polo homme",img:"img/3.png"},
+{nom:"Polo homme",img:"img/5.png"},
+{nom:"Polo homme",img:"img/6.png"},
+{nom:"Tee-shirt homme",img:"img/7.jpg"},
+{nom:"Tee-shirt homme",img:"img/8.png"},
+{nom:"Pantalon homme",img:"img/9.png"},
+{nom:"Pantalon homme",img:"img/10.png"},
+{nom:"Pantalon homme",img:"img/11.jpg"},
+{nom:"Pantalon homme",img:"img/12.png"},
 {nom:"Pantalon homme",img:"img/13.png"}],
+
 femme:[{nom:"Tee-shirt Femme",img:"img/7.jpg"},
-{nom:"Tee-shirt Femme",img:"img/8.png"},{nom:"Polo Femme <br> à partir de 25 000 Ar",img:"img/15.png"},{nom:"Polo Femme",img:"img/4.png"},{nom:"T-shirt femme",
-img:"https://images.unsplash.com/photo-1520975918318-7bdbd1b95b14?auto=format&w=800&q=80"},{nom:"Hoodie femme",img:"https://images.unsplash.com/photo-1618354691282-2b11de45c41f?auto=format&w=800&q=80"}],
-enfant:[{nom:"T-shirt enfant",img:"https://images.unsplash.com/photo-1593032465171-8b55a7b0b6a7?auto=format&w=800&q=80"},{nom:"Pantalon enfant",img:"https://images.unsplash.com/photo-1605478371229-fdbaadb0b2f0?auto=format&w=800&q=80"},{nom:"Sweat enfant",img:"https://images.unsplash.com/photo-1618354691373-d2cc86f10e56?auto=format&w=800&q=80"}]};
+{nom:"Tee-shirt Femme",img:"img/8.png"},
+{nom:"Polo Femme <br> à partir de 25 000 Ar",img:"img/15.png"},
+{nom:"Polo Femme",img:"img/4.png"},
+{nom:"T-shirt femme",img:"https://images.unsplash.com/photo-1520975918318-7bdbd1b95b14?auto=format&w=800&q=80"},
+{nom:"Hoodie femme",img:"https://images.unsplash.com/photo-1618354691282-2b11de45c41f?auto=format&w=800&q=80"}],
+
+enfant:[{nom:"T-shirt enfant",img:"https://images.unsplash.com/photo-1593032465171-8b55a7b0b6a7?auto=format&w=800&q=80"},
+{nom:"Pantalon enfant",img:"https://images.unsplash.com/photo-1605478371229-fdbaadb0b2f0?auto=format&w=800&q=80"},
+{nom:"Sweat enfant",img:"https://images.unsplash.com/photo-1618354691373-d2cc86f10e56?auto=format&w=800&q=80"}]};
 
 // -------------- Accuil image --------//
 const sections={
@@ -147,7 +163,7 @@ impression:catalogueHTML("Solutions d'impression et personnalisations",[
 {nom:"Broderie",img:"https://seridis.fr/wp-content/uploads/2017/06/Blog-1-broderie.jpg"},
 {nom:"UV DTF",img:"https://rbdigital.ca/cdn/shop/files/UV-DTF-Printer-6.jpg?width=1445"},
 {nom:"Presse à chaud",img:"https://sc04.alicdn.com/kf/H7016d1682f3848cf82d5ff8386614ef7c.jpg"},
-{nom:"Impression Papier",img:"https://media.istockphoto.com/id/1413483209/fr/photo/calendrier.jpg"}]),
+{nom:"Impression Papier",img:"img/17.png"}]),
 
 articles:catalogueHTML("Articles personnalisables",[
 {nom:"Mug personnalisé <br> 15 000Ar",img:"img/mug.jpg"},
@@ -176,19 +192,19 @@ menu.classList.remove("open");
 toggle.classList.remove("active");
 document.body.style.overflow="auto";
 if(t==="textiles"){
-const subButtons=document.querySelectorAll(".subtabs button"),subContent=document.getElementById("sub-content");
-subContent.innerHTML=produitsTextiles.homme.map(p=>`<div class="item"><img src="${p.img}"><p>${p.nom}</p></div>`).join('');
-subButtons.forEach(btn=>{
-btn.addEventListener("click",()=>{
-subButtons.forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-let k=btn.dataset.sub;
-subContent.innerHTML=produitsTextiles[k].map(p=>`<div class="item"><img src="${p.img}"><p>${p.nom}</p></div>`).join('');
-});
-});
-}
-});
-});
+      const subButtons=document.querySelectorAll(".subtabs button"),subContent=document.getElementById("sub-content");
+         subContent.innerHTML=produitsTextiles.homme.map(p=>`<div class="item"><img src="${p.img}"><p>${p.nom}</p></div>`).join('');
+            subButtons.forEach(btn=>{
+                btn.addEventListener("click",()=>{
+                   subButtons.forEach(b=>b.classList.remove("active"));
+                btn.classList.add("active");
+            let k=btn.dataset.sub;
+        subContent.innerHTML=produitsTextiles[k].map(p=>`<div class="item"><img src="${p.img}"><p>${p.nom}</p></div>`).join('');
+         });
+       });
+      }
+     });
+   });
 </script>
 </body>
 </html>
